@@ -38,14 +38,14 @@ function updateTime(){
 		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
 	}
 		
-	var now = new Date();
-	var date = now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear();
+	let now = new Date();
+	let date = now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear();
 	
-	var seconds = now.getSeconds();
-	var minutes = now.getMinutes();
-	var hours = now.getHours();
+	let seconds = now.getSeconds();
+	let minutes = now.getMinutes();
+	let hours = now.getHours();
 	
-	var time;
+	let time;
 	if(seconds < 10){
 		seconds = "0" + seconds;
 	}
@@ -61,7 +61,7 @@ function updateTime(){
 	document.getElementById("date").innerHTML = now.toLocaleDateString();
 	document.getElementById("time").innerHTML = time;
 	
-	var weekNumber = now.getWeek();	
+	let weekNumber = now.getWeek();	
 	document.getElementById("weekNumber").innerHTML = "week " + weekNumber;
 	
 }
@@ -85,5 +85,9 @@ function search(evt){
 		}else{
 			window.open(searchTermsMap.get(term));
 		}
+		
+		searchBar.value = '';
+		document.activeElement.blur(); // does not trigger a blur event
+		searchBar.dispatchEvent(new Event('blur')); // so dispatch one
 	}
 }
