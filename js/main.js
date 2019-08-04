@@ -9,7 +9,45 @@ function init(){
 	startTimer();
 	hookSearchBar();
 	hookSearchBtn();
+	initCtxMenu();
 }
+
+
+function initCtxMenu(){
+	window.ctxMenu = document.querySelector('#btnMenu');
+	
+	var links = document.querySelectorAll('.link')
+	
+	links.forEach(function(link){
+		link.addEventListener('contextmenu', showCtxMenu);
+	});
+	document.addEventListener('click', processClick);
+	document.addEventListener('contextmenu', processClick);
+}
+
+function showCtxMenu(event){
+	ctxMenu.style.display = 'block';
+  
+	ctxMenu.style.left = event.pageX + 'px';
+	ctxMenu.style.top = (event.pageY - ctxMenu.offsetHeight) + 'px';
+  
+	event.stopPropagation(); // prevent any parent element from getting the event
+	event.preventDefault(); // disable the default behavior of the contextmenu event
+}
+
+function hideCtxMenu(){
+	ctxMenu.style.display = 'none';
+}
+
+function processClick(event){
+	if(event.target.classList.contains('menuItem')){
+		alert(event.target.dataset.value);
+	}else{
+		// click is not on a context menu item
+		hideCtxMenu();
+	}
+}
+
 
 function hookSearchBtn(){
 	var searchBtn = document.querySelector('#go');
@@ -38,14 +76,14 @@ function updateTime(){
 		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
 	}
 		
-	let now = new Date();
-	let date = now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear();
+	var now = new Date();
+	var date = now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear();
 	
-	let seconds = now.getSeconds();
-	let minutes = now.getMinutes();
-	let hours = now.getHours();
+	var seconds = now.getSeconds();
+	var minutes = now.getMinutes();
+	var hours = now.getHours();
 	
-	let time;
+	var time;
 	if(seconds < 10){
 		seconds = "0" + seconds;
 	}
@@ -61,7 +99,7 @@ function updateTime(){
 	document.getElementById("date").innerHTML = now.toLocaleDateString();
 	document.getElementById("time").innerHTML = time;
 	
-	let weekNumber = now.getWeek();	
+	var weekNumber = now.getWeek();	
 	document.getElementById("weekNumber").innerHTML = "week " + weekNumber;
 	
 }
