@@ -1,0 +1,168 @@
+/* version: 1.1 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { 
+	background: url('../images/DSC01623.JPG') no-repeat center center fixed; 
+	background-size: cover;
+}
+
+img{
+	width: 5vw;
+	height: 5vw;
+	padding:.3vw;
+	opacity: 0.5;
+}
+
+img:hover{
+	opacity: 1;
+}
+
+.wrapper {
+	margin: 0;
+	padding: 0;
+	display: grid;
+	/*border-style: solid;
+	border-color: red;*/
+	grid-template-rows: 3fr 1fr 3fr;
+	grid-template-areas:
+		"clock"
+		"search"
+		"links";
+		
+	width: 100vw;
+	height: 100vh;
+}
+
+.time{
+	display: flex;
+	flex-direction: column;
+	area: "clock";
+	justify-content:flex-start;
+	align-items: center;
+}
+
+.search {
+	display: flex;
+	area: "links";
+	position: relative;
+}
+
+
+
+.links{
+	/*border: 3px solid green;*/
+	display: flex;
+	flex-direction: row;
+	area: "links";
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.center {
+	/*border: 3px solid green;*/
+	justify-content: center;
+	align-items:center;
+}
+
+#time {
+	color: white;
+	font-size: 7em;
+}
+
+#date {
+	color: white;
+	font-size: 3em;
+}
+
+#weekNumber {
+	color: white;
+	font-size: 2em;
+}
+
+#go {
+	background-image: linear-gradient(#99d6ff, #008ae6);
+	font-size: 1.5em;
+	padding: .5em .5em .5em .5em;
+	margin-left: 1vw;
+	  border: 0.2vw solid #1aa3ff;
+  border-radius: 4px;
+}
+#go:hover {
+	border: 0.2vw solid #99d6ff;
+}
+#go:active {
+	background-image: linear-gradient(#008ae6, #99d6ff);
+	
+	input[type=text]:focus {
+		width: 30vw;
+	}
+}
+
+input[type=text] {
+  width: 12vw;
+  border: 0.2vw solid #008ae6;
+  border-radius: 4px;
+  font-size: 1.5em;
+  background-color: #f2f2f2;
+  background-image: url('../images/searchicon.png');
+  background-size: auto;
+  background-position: 0.25em center; 
+  background-repeat: no-repeat;
+  padding: .5em .5em .5em 1.5em;
+  transition: width 0.4s ease-in-out;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+	#time {
+		font-size: 4em;
+	}
+	#date {
+		font-size: 2em;
+	}
+	#weekNumber {
+		font-size: 2em;
+	}
+}
+
+/* WARNING: handled by JS 
+@media only screen and (max-width: 600px) {
+	input[type=text] {
+		width: 2vw;
+		background-position: center center;
+	}
+	input[type=text]:focus {
+		width: 80vw;
+		background-position: 0.25em center;
+	}
+		
+	img {
+		width: 20vw;
+	}
+}
+
+@media only screen and (max-width: 800){
+	input[type=text] {
+		width: 7vw;
+	}	
+}
+*/
+
+@media only screen and (max-height: 600px) {
+	#weekNumber {
+		display: none;
+	}
+}
+
+@media only screen and (max-height: 400px) {
+	#date {
+		display: none;
+	}
+}
+*/
