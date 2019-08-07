@@ -8,7 +8,8 @@
 	<meta name="description" content="The HTML5 template">
 	<meta name="author" content="Bastiaan Wildenberg">
 	
-	<link rel="stylesheet" href="css/styles.css?v=1.4">
+	<!-- desktop mostly for now -->
+	<link rel="stylesheet" href="css/styles.css?v=1.5">
 	<script src="js/main.js"></script>
 </head>
 
@@ -28,16 +29,17 @@
 		
 		<div id="quickLinks" class="links">
 			<a href="https://github.com/wildenberg84" target="_blank">
-				<img class="link" src="images/github.png" alt="GitHub octocat" height="150px">
+				<img id="link1" class="link" src="images/github.png" alt="GitHub octocat">
 			</a>
+			<!-- replace with codepen pens -->
 			<a href="https://www.youtube.com/channel/UCsQK1Ux9fd5m-iOLlaPjomw?view_as=subscriber" target="_blank">
-				<img class="link" src="images/youtube.png" alt="YouTube logo" height="150px">
+				<img id="link2" class="link" src="images/youtube.png" alt="YouTube logo">
 			</a>
 			<a id="todo_btn" href="#">
-				<img class="link" src="images/todo.png" alt="todo list" height="150px">
+				<img id="link3" class="link" src="images/todo.png" alt="todo list">
 			</a>
 			<a href="#projects.html">
-				<img class="link" src="images/projects.png" alt="projects" height="150px">
+				<img id="link4" class="link" src="images/projects.png" alt="projects">
 			</a>
 		</div>
 		
@@ -46,6 +48,9 @@
 	<div id="btnMenu">
 		<div class="menuItem" data-value="edit">Edit</div>
 		<div class="menuItem" data-value="remove">Remove</div>
+	</div>
+	
+	<div id="editMenuItem">
 	</div>
 	
 </body>

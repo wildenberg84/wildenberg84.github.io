@@ -4,6 +4,7 @@ var searchTermsMap = new Map();
 searchTermsMap.set('github', 'https://github.com/wildenberg84');
 searchTermsMap.set('youtube', 'https://www.youtube.com/channel/UCsQK1Ux9fd5m-iOLlaPjomw?view_as=subscriber');
 
+var activeMenuItem;
 
 function init(){
 	startTimer();
@@ -21,11 +22,15 @@ function initCtxMenu(){
 	links.forEach(function(link){
 		link.addEventListener('contextmenu', showCtxMenu);
 	});
+	
 	document.addEventListener('click', processClick);
 	document.addEventListener('contextmenu', processClick);
+	
+	window.addEventListener('resize', hideCtxMenu);
 }
 
 function showCtxMenu(event){
+	activeMenuItem = event.target;
 	ctxMenu.style.display = 'block';
   
 	ctxMenu.style.left = event.pageX + 'px';
@@ -36,12 +41,27 @@ function showCtxMenu(event){
 }
 
 function hideCtxMenu(){
+	activeMenuItem = undefined;
 	ctxMenu.style.display = 'none';
 }
 
 function processClick(event){
 	if(event.target.classList.contains('menuItem')){
-		alert(event.target.dataset.value);
+		var task = event.target.dataset.value;
+		
+		// add settings to localStorage
+		// use default if not stored already
+		switch(task){
+			case 'edit': 
+				document.querySelector('#editMenuItem').style.display = 'flex';
+				hideCtxMenu();
+				break;
+			case 'remove': 
+				activeMenuItem.style.display = 'none';
+				hideCtxMenu();
+				break;
+			default: break;
+		}
 	}else{
 		// click is not on a context menu item
 		hideCtxMenu();
@@ -109,12 +129,12 @@ function startTimer(){
 	setInterval(updateTime, 500);
 }
 
-function search(evt){	
+function search(event){	
 	var term = searchBar.value;
 			
 	if(
 		(
-			(evt.target.id == 'searchBar' && evt.key == 'Enter') || (evt.target.id == 'go' && evt.button == 0)
+			(event.target.id == 'searchBar' && event.key == 'Enter') || (event.target.id == 'go' && event.button == 0)
 		) 
 			&& term != ''){
 		

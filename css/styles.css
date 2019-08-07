@@ -140,7 +140,16 @@ input[type=text] {
   background-color:#008ae6;
 }
 
-
+#editMenuItem{
+	display: none; /* flex */
+	position:fixed; 
+	left:0; 
+	top:0;
+	width:100vw; 
+	height:100vh; 
+	index: 100;
+	background-color:#f6f6f680;
+}
 
 
 
