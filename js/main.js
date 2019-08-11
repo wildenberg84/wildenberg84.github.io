@@ -10,9 +10,28 @@ function init(){
 	startTimer();
 	hookSearchBar();
 	hookSearchBtn();
+	hookEditMenu();
+	hookSaveBtn();
 	initCtxMenu();
 }
 
+function hookSaveBtn(){
+	document.querySelector('#saveBtn').addEventListener('click', save(activeMenuItem));
+}
+
+function save(item){
+	// set item to new values
+	// save to localStorage
+		// warn in case of error
+}
+
+function hookEditMenu(){
+	document.querySelector('#close').addEventListener('click', function(evt){
+		var editMenu = document.querySelector('#editMenuItem');
+		editMenu.style.display = 'none';
+	});
+}
+	
 
 function initCtxMenu(){
 	window.ctxMenu = document.querySelector('#btnMenu');
@@ -49,15 +68,18 @@ function processClick(event){
 	if(event.target.classList.contains('menuItem')){
 		var task = event.target.dataset.value;
 		
-		// add settings to localStorage
-		// use default if not stored already
+		// Menu item edit
 		switch(task){
 			case 'edit': 
+				document.querySelector('#descr').value = activeMenuItem.alt;
+				document.querySelector('#url').value = document.querySelector('#' + activeMenuItem.id + 'HREF').href;
+				document.querySelector('#linkIcon').src = activeMenuItem.src;
 				document.querySelector('#editMenuItem').style.display = 'flex';
 				hideCtxMenu();
 				break;
 			case 'remove': 
 				activeMenuItem.style.display = 'none';
+				// remove from localStorage!!!
 				hideCtxMenu();
 				break;
 			default: break;

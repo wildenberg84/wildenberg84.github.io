@@ -157,8 +157,6 @@ html {
 
 
 
-
-
 #linkSettingsForm{
   display: grid;
   
@@ -203,6 +201,8 @@ html {
   font-weight: bold;
   
   justify-content: flex-end;
+  
+  cursor: pointer;
 }
 
 #icon{
@@ -261,6 +261,8 @@ html {
   
   border: 0px;
   background-color: #008ae6;
+  
+  cursor: pointer;
 }
 
 #saveBtn:active{
