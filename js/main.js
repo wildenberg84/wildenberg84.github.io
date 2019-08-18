@@ -24,6 +24,7 @@ function init(){
 
 
 function hookIconUpload(){
+	// click on icon
 	document.querySelector('#linkIcon').addEventListener('click', (event) => {
 			document.querySelector('#iconUpload').click();
 		}
@@ -51,6 +52,33 @@ function hookIconUpload(){
 			}
 		}
 	);
+	
+	// drag / drop from desktop
+	var img = document.querySelector('#linkIcon');
+
+	img.addEventListener('dragover', function handleDragOver(evt) {
+	  evt.stopPropagation();
+	  evt.preventDefault();
+	  evt.dataTransfer.dropEffect = 'copy';
+	  });
+
+	img.addEventListener('drop', function(evt) {
+	  evt.stopPropagation();
+	  evt.preventDefault();
+	  var files = evt.dataTransfer.files;  // FileList object.
+	  var file = files[0];                // File     object.
+		
+	  const reader = new FileReader();
+	  
+	  reader.onload = (function(aImg) { 
+		return function(e) { 
+		  aImg.src = e.target.result; 
+		}; 
+	  })(img);
+	  
+	  // NOTE there is absolutely no check if the dropped file is actually an image
+	  img.src = reader.readAsDataURL(file);
+	});
 }
 
 // type parameter is full file.type
