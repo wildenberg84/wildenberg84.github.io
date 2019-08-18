@@ -11,15 +11,59 @@ var activeMenuItem;
 
 function init(){
 	startTimer();
+	
 	hookSearchBar();
 	hookSearchBtn();
 	hookEditMenu();
 	hookSaveBtn();
-	initCtxMenu();
+	hookIconUpload();
 	
+	initCtxMenu();
 	loadQuickLinks();
 }
 
+
+function hookIconUpload(){
+	document.querySelector('#linkIcon').addEventListener('click', (event) => {
+			document.querySelector('#iconUpload').click();
+		}
+	);
+		
+	document.querySelector('#iconUpload').addEventListener('change', (event) => {
+			var img = document.querySelector('#linkIcon');
+			var file = document.querySelector('#iconUpload').files[0];
+			
+			// check if valid image file
+			if(!checkValidImageType(file.type)){
+				alert('Invalid image type!');
+				return false;
+			}else{			
+				// load image to src
+				const reader = new FileReader();
+		  
+				reader.onload = (function(aImg) { 
+					return function(e) { 
+						aImg.src = e.target.result; 
+					}; 
+				})(img);
+		  
+				img.src = reader.readAsDataURL(file);
+			}
+		}
+	);
+}
+
+// type parameter is full file.type
+function checkValidImageType(type){
+	var validTypes = ['apng', 'bmp', 'gif', 'x-icon', 'jpeg', 'png', 'svg+xml', 'tiff', 'webp'];
+	var imgType = type.substring(6); // cuts off 'image/'
+	
+	if(validTypes.includes(imgType)){
+		return true;
+	}else{
+		return false;
+	}
+}
 
 function loadQuickLinks(){
 	if (storageAvailable('localStorage')) {
@@ -60,10 +104,10 @@ function loadQuickLinks(){
 }
 
 function initStorageLinks(){
-	let link1 = ['images/github.png', 'GitHub octocat', 'https://github.com/wildenberg84'];
-	let link2 = ['images/codepen.png', 'Codepen pens', 'https://codepen.io/wildenberg84/#'];
-	let link3 = ['images/todo.png', 'todo list', '#'];
-	let link4 = ['images/projects.png', 'projects', '#projects.html'];
+	var link1 = ['images/github.png', 'GitHub octocat', 'https://github.com/wildenberg84'];
+	var link2 = ['images/codepen.png', 'Codepen pens', 'https://codepen.io/wildenberg84/#'];
+	var link3 = ['images/todo.png', 'todo list', '#'];
+	var link4 = ['images/projects.png', 'projects', '#projects.html'];
 
 	localStorage['link1'] = JSON.stringify(link1);
 	localStorage['link2'] = JSON.stringify(link2);
@@ -71,6 +115,7 @@ function initStorageLinks(){
 	localStorage['link4'] = JSON.stringify(link4);
 }
 
+// from https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
 function storageAvailable(type) {
     var storage;
     try {
@@ -172,7 +217,7 @@ function processClick(event){
 			case 'remove': 
 				activeMenuItem.style.display = 'none';
 				// TODO: remove from localStorage
-				// TODO: if it's the last item, add a empty placeholder
+				// TODO: if it's the last item, add an empty placeholder
 				hideCtxMenu();
 				break;
 			default: break;
