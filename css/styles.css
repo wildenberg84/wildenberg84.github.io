@@ -168,7 +168,7 @@ html {
   grid-template-areas: "head head close"
               "icon descr descr"
               "icon url url"
-              "icon save save";
+              "icon target save";
   
   width: 50vw;
   min-width: 440px;
@@ -237,6 +237,21 @@ html {
   background-color: #f2f2f2;  
   border-right: 5px solid #008ae6;
   font-weight: bold;
+}
+
+#linkTarget{
+  grid-area: target;
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;  
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 5px solid #008ae6
+}
+
+#newTab{
+  transform: scale(1.5);
+  margin-left: 10px;
 }
 
 #save{
