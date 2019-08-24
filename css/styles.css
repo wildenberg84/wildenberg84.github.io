@@ -147,7 +147,7 @@ html {
 	top:0;
 	width:100vw; 
 	height:100vh; 
-	index: 100;
+	z-index: 100;
 	background-color:#f6f6f680;
 	font-size: 1.5rem;
 	

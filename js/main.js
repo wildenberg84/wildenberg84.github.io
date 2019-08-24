@@ -227,6 +227,11 @@ function save(){
 		}else{
 			document.querySelector('#' + activeMenuItem.id + 'HREF').target = '';
 		}
+		
+		document.querySelector('#descr').value = '';
+		document.querySelector('#url').value = 'https://';					
+		document.querySelector('#linkIcon').src = './images/noicon.png';
+		document.querySelector('#newTab').checked = false;
 	} catch(error){
 		alert(error);
 	}
@@ -272,16 +277,18 @@ function showCtxMenu(event){
 	event.preventDefault(); // disable the default behavior of the contextmenu event
 }
 
-function showCtxMenu(){};
-
 function hideCtxMenu(){
 	ctxMenu.style.display = 'none';
 }
 
 function processClick(event){
 	if(event.target.classList.contains('link') && event.target.classList.contains('empty')){
-		// simulate contextmenu event
-		alert('implement contextmenu event');
+		activeMenuItem = event.target;
+		document.querySelector('#url').value = 'https://';
+		document.querySelector('#editMenuItem').style.display = 'flex';
+		
+		event.stopPropagation(); // prevent any parent element from getting the event
+		event.preventDefault(); // disable the default behavior of the contextmenu event
 	}
 	
 	if(event.target.classList.contains('menuItem')){
@@ -299,7 +306,13 @@ function processClick(event){
 				}
 					
 				document.querySelector('#linkIcon').src = activeMenuItem.getAttribute('src');
-				document.querySelector('#newTab').checked = document.querySelector('#' + activeMenuItem.id + 'HREF').checked;
+				
+				if(document.querySelector('#' + activeMenuItem.id + 'HREF').target == '_blank'){
+					document.querySelector('#newTab').checked = true;
+				}else{
+					document.querySelector('#newTab').checked = false;
+				}
+				
 				document.querySelector('#editMenuItem').style.display = 'flex';
 				
 				hideCtxMenu();
@@ -312,6 +325,11 @@ function processClick(event){
 				document.querySelector('#' + activeMenuItem.id).alt = '';
 				document.querySelector('#' + activeMenuItem.id + 'HREF').href = '';
 				document.querySelector('#' + activeMenuItem.id + 'HREF').target = '';	
+				
+				document.querySelector('#descr').value = '';
+				document.querySelector('#url').value = 'https://';					
+				document.querySelector('#linkIcon').src = './images/noicon.png';
+				document.querySelector('#newTab').checked = false;
 				
 				hideCtxMenu();
 				break;
