@@ -100,12 +100,7 @@ function loadQuickLinks(){
 		
 		if(link1 != undefined){
 			link1 = JSON.parse(link1); // either check the storage or catch SyntaxError from JSON
-			document.querySelector('#link1').src = link1[0];
-			if(document.querySelector('#link1').src = './images/noicon.png'){
-				// no icon src -- use default
-				document.querySelector('#link1').classList.toggle('empty');
-			}
-			
+			document.querySelector('#link1').src = link1[0];			
 			document.querySelector('#link1').title = link1[1];
 			document.querySelector('#link1HREF').href = link1[2];
 		
@@ -121,11 +116,7 @@ function loadQuickLinks(){
 		if(link2 != undefined){
 			link2 = JSON.parse(link2);
 			
-			document.querySelector('#link2').src = link2[0];
-			if(document.querySelector('#link2').src = './images/noicon.png'){
-				document.querySelector('#link2').classList.toggle('empty');
-			}
-			
+			document.querySelector('#link2').src = link2[0];			
 			document.querySelector('#link2').title = link2[1];
 			document.querySelector('#link2HREF').href = link2[2];
 			
@@ -141,11 +132,7 @@ function loadQuickLinks(){
 		if(link3 != undefined){
 			link3 = JSON.parse(link3);
 			
-			document.querySelector('#link3').src = link3[0];
-			if(document.querySelector('#link3').src = './images/noicon.png'){
-				document.querySelector('#link3').classList.toggle('empty');
-			}
-			
+			document.querySelector('#link3').src = link3[0];			
 			document.querySelector('#link3').title = link3[1];
 			document.querySelector('#link3HREF').href = link3[2];
 
@@ -161,11 +148,7 @@ function loadQuickLinks(){
 		if(link4 != undefined){
 			link4 = JSON.parse(link4);
 			
-			document.querySelector('#link4').src = link4[0];
-			if(document.querySelector('#link4').src = './images/noicon.png'){
-				document.querySelector('#link4').classList.toggle('empty');
-			}
-			
+			document.querySelector('#link4').src = link4[0];			
 			document.querySelector('#link4').title = link4[1];
 			document.querySelector('#link4HREF').href = link4[2];
 			
@@ -217,10 +200,8 @@ function save(){
 	try{
 		var iconImg = undefined;
 		
-		if(activeMenuItem.classList.contains('empty')){
-			// no icon src
-			activeMenuItem.classList.toggle('empty');
-			iconImg = './images/noicon.png';
+		if(document.querySelector('#linkIcon').src == './images/noicon.png'){
+			iconImg = noIconImg;
 		}else{
 			iconImg = document.querySelector('#linkIcon').src;
 		}
@@ -314,7 +295,7 @@ function hideCtxMenu(){
 }
 
 function processClick(event){
-	if(event.target.classList.contains('link') && event.target.classList.contains('empty')){
+	if(event.target.classList.contains('link') && event.target.classList.contains('nolink')){
 		activeMenuItem = event.target;
 		document.querySelector('#url').value = 'https://';
 		document.querySelector('#editMenuItem').style.display = 'flex';
