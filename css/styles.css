@@ -159,6 +159,9 @@ html {
 	display: none;
 }
 
+#quickLinks{
+	display: none;
+}
 
 #linkSettingsForm{
   display: grid;
@@ -312,29 +315,6 @@ html {
 	}
 }
 
-/* WARNING: handled by JS 
-@media only screen and (max-width: 600px) {
-	input[type=text] {
-		width: 2vw;
-		background-position: center center;
-	}
-	input[type=text]:focus {
-		width: 80vw;
-		background-position: 0.25em center;
-	}
-		
-	img {
-		width: 20vw;
-	}
-}
-
-@media only screen and (max-width: 800){
-	input[type=text] {
-		width: 7vw;
-	}	
-}
-*/
-
 @media only screen and (max-height: 600px) {
 	#weekNumber {
 		display: none;
@@ -346,4 +326,3 @@ html {
 		display: none;
 	}
 }
-*/

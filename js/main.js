@@ -160,9 +160,11 @@ function loadQuickLinks(){
 		}else{
 			document.querySelector('#link4').classList.add('nolink');
 		}
+		
+		document.querySelector('#quickLinks').style.display = 'flex'; // fixes loading issues -- alternative : inject code instead
 			
 	} else {
-		document.querySelector('#quickLinks').style.display = 'none';
+		document.querySelector('#quickLinks').style.display = 'none'; // fail-safe -- should be in the css
 	}
 }
 
