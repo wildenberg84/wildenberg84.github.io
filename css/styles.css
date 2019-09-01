@@ -126,9 +126,9 @@ html {
   display: none;
   flex-direction:row;
   cursor: pointer;
-  background-color: #f2f2f2bf;
+  background-color: rgba(242,242,242,0.749);
   border: 3px solid #008ae6;
-  box-shadow: 8px 8px 5px #a6a6a6cc; /* last two is alpha channel (cc being 80%) */
+  box-shadow: 8px 8px 5px rgba(166,166,166,0.3); /* last two is alpha channel (cc being 80%) */
 }
 
 .menuItem {
@@ -148,7 +148,7 @@ html {
 	width:100vw; 
 	height:100vh; 
 	z-index: 100;
-	background-color:#f6f6f680;
+	background-color:rgba(246,246,246,0.4);
 	font-size: 1.5rem;
 	
 	align-items:center;
