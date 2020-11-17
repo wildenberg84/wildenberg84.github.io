@@ -1,86 +1,25 @@
 <!DOCTYPE html>
-
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	
-	<title>Wildenberg Github</title>
-	<meta name="description" content="The HTML5 template">
-	<meta name="author" content="Bastiaan Wildenberg">
-	
-	<!-- desktop mostly for now -->
-	<link rel="stylesheet" href="css/styles.css?v=1.5">
-	<script src="js/main.js"></script>
-</head>
-
-<body onload="init()">
-
-	<div class="wrapper">
-		<div class="time">
-			<div id="time"></div>
-			<div id="date"></div>
-			<div id="weekNumber"></div>
-		</div>
-	
-		<div class="search center">
-			<!-- handle placeholder with JS, set background to right and clickable, handle width with JS -->
-			<span><input id="searchBar" type="text" placeholder="Search.."><button id="go" type="button">Go</button></span>
-		</div>	
-		
-		<div id="quickLinks" class="links">
-			<a id="link1HREF" href="" target="">
-				<img id="link1" class="link empty" src="images/addlink.png" title="">
-			</a>
-			<a id="link2HREF" href="" target="">
-				<img id="link2" class="link empty" src="images/addlink.png" title="">
-			</a>
-			<a id="link3HREF" href="" target="">
-				<img id="link3" class="link empty" src="images/addlink.png" title="">
-			</a>
-			<a id="link4HREF" href="" target="">
-				<img id="link4" class="link empty" src="images/addlink.png" title="">
-			</a>
-		</div>
-		
-	</div>
-	
-	<div id="btnMenu">
-		<div class="menuItem" data-value="edit">Edit</div>
-		<div class="menuItem" data-value="remove">Remove</div>
-		<div class="menuItem" data-value="add">Add link</div>
-	</div>
-	
-	<div id="editMenuItem">
-		<div id="linkSettingsForm">
-			<div id="header">
-				<span>
-					Link settings
-				</span>
-			</div>
-			<div id="close">
-			  X
-			</div>
-			<div id="icon">
-				<input id="iconUpload" type="file">
-				<img id="linkIcon" class="linkIcon" src="images/noicon.png" alt="link icon" width="150px" height="150px">
-			</div>
-			<div id="linkDescr">
-				<label for="descr">Description:</label>
-				<input type="text" name="descr" id="descr" class="settingsInput" value="">
-			</div>
-			<div id="linkUrl">
-				<label for="descr">URL:</label>
-				<input type="text" name="url" id="url" class="settingsInput" value="">
-			</div>
-			<div id="linkTarget">
-				<label for="target">Open in new window:</label>
-				<input type="checkbox" id="newTab" name="newTab"> 
-			</div>
-			<div id="save">
-				<button id="saveBtn">Save (for this browser)</button>
-			</div>
-		</div>
-	</div>
-	
-</body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | ModTheCube</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Builds.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">ModTheCube</div>
+      </div>
+    </div>
+  </body>
 </html>
